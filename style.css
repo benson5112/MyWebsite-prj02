@@ -1,1 +1,337 @@
-/* Add your CSS here */
+/* ===================================
+   INTEL SUSTAINABILITY TIMELINE
+   Beginner-friendly CSS
+   =================================== */
+
+/* ===================================
+   COLORS - Intel Branding
+   =================================== */
+:root {
+  /* Intel brand colors */
+  --intel-blue: #0071c5;
+  --intel-dark-blue: #003c71;
+  --intel-light-bg: #f4f8fb;
+  --white: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================
+   GLOBAL STYLES
+   =================================== */
+
+/* Reset default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--intel-light-bg);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===================================
+   HERO / HEADER SECTION
+   Intel-inspired branding
+   =================================== */
+
+header.hero {
+  background: linear-gradient(135deg, #003c71 0%, #005a9c 45%, #0071c5 100%);
+  padding: 80px 20px 60px;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  width: 140px;
+  height: auto;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  background-color: var(--white);
+  margin: 16px auto 0;
+  border-radius: 999px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  max-width: 720px;
+  margin: 0 auto;
+  font-weight: 400;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* ===================================
+   TIMELINE SECTION
+   Horizontal scroll on desktop
+   =================================== */
+
+.timeline-section {
+  padding: 50px 20px 120px;
+  background-color: #f3f4f6;
+  min-height: 650px;
+}
+
+.timeline-instruction {
+  text-align: center;
+  color: #4b5563;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 auto 48px;
+  max-width: 720px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 40px;
+  gap: 32px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  margin: 0 auto 80px;
+  max-width: 1280px;
+}
+
+.timeline::-webkit-scrollbar {
+  height: 10px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: rgba(0, 113, 197, 0.25);
+  border-radius: 999px;
+}
+
+.timeline {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 113, 197, 0.25) transparent;
+}
+
+/* ===================================
+   MILESTONE CARDS
+   =================================== */
+
+.card {
+  flex-shrink: 0;
+  width: 320px;
+  min-width: 300px;
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Hover effect: Scale and shadow */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.15);
+}
+
+.card-year {
+  color: var(--intel-blue);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  color: var(--intel-dark-blue);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.card-image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.card-summary {
+  font-size: 0.97rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ===================================
+   DETAILS SECTION - HIDDEN BY DEFAULT
+   Revealed on hover with smooth animation
+   =================================== */
+
+.details {
+  opacity: 0;
+  visibility: hidden;
+  min-height: 90px;
+  overflow: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+  font-size: 0.95rem;
+  color: var(--intel-dark-blue);
+  line-height: 1.7;
+  margin-top: 0;
+  border-top: 2px solid transparent;
+  padding-top: 0;
+}
+
+.card:hover .details {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 14px;
+  border-top-color: #e5e7eb;
+  padding-top: 12px;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   Mobile devices (screens 768px or smaller)
+   =================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 18px 50px;
+  }
+
+  .hero-logo {
+    width: 120px;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .timeline-section {
+    padding: 30px 16px 30px;
+  }
+
+  .timeline {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding: 0;
+    gap: 18px;
+    scroll-snap-type: none;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    scroll-snap-align: none;
+    margin: 0 auto;
+  }
+
+  .details {
+    opacity: 1;
+    visibility: visible;
+    min-height: 90px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card-image {
+    height: 150px;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  }
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+footer.footer {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+  background-color: var(--intel-dark-blue);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+footer.footer p {
+  margin: 0;
+}
+
+/* ===================================
+   ACCESSIBILITY & POLISH
+   =================================== */
+
+/* Focus styles for keyboard navigation */
+.card:focus,
+.card:focus-visible {
+  outline: 3px solid var(--intel-blue);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling for browsers that support it */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print styles (optional, for printing the page) */
+@media print {
+  .timeline {
+    overflow: visible;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 100%;
+  }
+}
